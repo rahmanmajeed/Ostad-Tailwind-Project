@@ -1,0 +1,19 @@
+{
+  "name": "tailwind-project1",
+  "version": "1.0.0",
+  "description": "1. Create a New Directory for Your Project\r First, create a directory where you want your project to reside.\r ```js\r mkdir my-tailwind-project\r cd my-tailwind-project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tailwindcss -i ./src/main.css -o ./src/output.css --watch",
+    "production": "npx tailwindcss -i ./src/main.css -o ./dist/production-output.css --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.16"
+  }
+}
