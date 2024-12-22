@@ -8,7 +8,7 @@
   </head>
   <body class="bg-slate-100 flex flex-col min-h-screen dark:bg-gray-900">
     <header
-      class="bg-blue-500 text-white p-4 text-center font-bold dark:bg-blue-800"
+      class="bg-blue-500 text-white p-4 text-center font-bold dark:bg-blue-800 sticky top-0"
     >
       <button
         class="mt-2 bg-gray-200 text-black py-2 px-4 rounded"
@@ -19,21 +19,39 @@
     </header>
     <div class="flex flex-grow">
       <aside
-        class="w-5/12 bg-gray-300 dark:bg-slate-800 rounded-md shadow-md p-6"
+        class="w-2/12 bg-gray-300 dark:bg-slate-800 rounded-md shadow-md p-6"
       >
-        <h2 class="text-2xl font-semibold mb-4">Sidebar</h2>
-        <ul class="text-blue-700 w-full">
-          <li class="mb-5 px-4 py-2 hover:bg-lime-300 rounded-lg">
-            <a href="#" class="rounded-lg">Sidebar Item 01</a>
+        <div class="flex items-center mb-8">
+          <img
+            src="https://avatar.iran.liara.run/public"
+            alt="profile"
+            class="w-16 h-16 object-cover rounded-full border-lime-100 mr-4"
+          />
+
+          <h2 class="text-xl font-semibold text-gray-700 dark:text-white">
+            Company Name
+          </h2>
+        </div>
+        <ul class="space-y-4">
+          <li
+            class="px-4 py-3 rounded-lg hover:bg-stone-200 hover:text-gray-700"
+          >
+            <a href="#" class="rounded-lg">Dashboard</a>
           </li>
-          <li class="mb-5 px-4 py-2 hover:bg-lime-300 rounded-lg">
-            <a href="#" class="rounded-lg">Sidebar Item 02</a>
+          <li
+            class="px-4 py-3 rounded-lg hover:bg-stone-200 hover:text-gray-700"
+          >
+            <a href="#" class="rounded-lg">Product</a>
           </li>
-          <li class="mb-5 px-4 py-2 hover:bg-lime-300 rounded-lg">
-            <a href="#" class="rounded-lg">Sidebar Item 03</a>
+          <li
+            class="px-4 py-3 rounded-lg hover:bg-stone-200 hover:text-gray-700"
+          >
+            <a href="#" class="rounded-lg">Settings</a>
           </li>
-          <li class="mb-5 px-4 py-2 hover:bg-lime-300 rounded-lg">
-            <a href="#" class="rounded-lg">Sidebar Item 04</a>
+          <li
+            class="px-4 py-3 rounded-lg hover:bg-stone-200 hover:text-gray-700"
+          >
+            <a href="#" class="rounded-lg">Reports</a>
           </li>
         </ul>
       </aside>
@@ -43,13 +61,163 @@
             Image Gallery
           </h2>
           <div class="grid grid-cols-3 gap-6 m-2 overflow-scroll">
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
+            <!-- Image card with description-->
+            <div
+              class="max-w-[500px] rounded overflow-hidden shadow-lg relative"
+            >
+              <!-- Image part-->
+              <div class="aspect-w-16 aspect-h-9">
                 <img
                   src="https://farm4.staticflickr.com/3075/3168662394_7d7103de7d_z_d.jpg"
                   alt="Image 1"
                   class="object-cover w-full h-full rounded-md shadow-lg"
                 />
+              </div>
+              <div
+                class="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-sm font-semibold rounded-bl-md"
+              >
+                Feature
+              </div>
+              <div
+                class="px-4 py-4 flex flex-1 flex-col hover:bg-gradient-to-r hover:from-orange-200 hover:via-red-200 hover:to-purple-200 rounded-md"
+              >
+                <div class="font-bold text-xl mb-2">The Birds</div>
+                <p class="text-gray-700 text-base line-clamp-5">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem Ipsum
+                  passages, and more recently with desktop publishing software
+                  like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+                <a href="#" class="text-blue-400 underline">see more</a>
+
+                <!-- image meta -->
+                <div class="flex flex-1 justify-between gap-5 mt-5">
+                  <div class="inline-flex gap-4 justify-start">
+                    <div class="inline-flex flex-col items-start">
+                      <p class="text-gray-600 text-base leading-5">Views</p>
+                      <p class="font-semibold">4,5234,10</p>
+                    </div>
+                    <div class="inline-flex flex-col items-start">
+                      <p class="text-gray-600 text-base leading-5">Downloads</p>
+                      <p class="font-semibold">5234,109</p>
+                    </div>
+                  </div>
+                  <div class="inline-flex gap-4 justify-end">
+                    <div class="inline-flex flex-col items-start">
+                      <button
+                        class="border-2 border-gray-400 rounded-lg shadow-md px-3 py-2"
+                      >
+                        Share
+                      </button>
+                    </div>
+                    <div class="inline-flex flex-col items-start">
+                      <button
+                        class="border-2 border-gray-400 rounded-lg shadow-md px-3 py-2"
+                      >
+                        Downloads
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="px-1 py-3 absolute bottom-4">
+                  <span
+                    class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
+                    >#Bird</span
+                  >
+                  <span
+                    class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
+                    >#Photograhpy</span
+                  >
+                  <span
+                    class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
+                    >#Learning</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="max-w-[500px] rounded overflow-hidden shadow-lg relative"
+            >
+              <!-- Image part-->
+              <div class="aspect-w-16 aspect-h-9">
+                <img
+                  src="https://farm7.staticflickr.com/6089/6115759179_86316c08ff_z_d.jpg"
+                  alt="Image 1"
+                  class="object-cover w-full h-full rounded-md shadow-lg"
+                />
+              </div>
+              <div
+                class="absolute top-0 right-0 bg-red-600 text-white px-3 py-1 text-sm font-semibold rounded-bl-md"
+              >
+                Feature
+              </div>
+              <div class="px-4 py-4 flex flex-1 flex-col">
+                <div class="font-bold text-xl mb-2">The Birds</div>
+                <p class="text-gray-700 text-base line-clamp-5">
+                  Lorem Ipsum is simply dummy text of the printing and
+                  typesetting industry. Lorem Ipsum has been the industry's
+                  standard dummy text ever since the 1500s, when an unknown
+                  printer took a galley of type and scrambled it to make a type
+                  specimen book. It has survived not only five centuries, but
+                  also the leap into electronic typesetting, remaining
+                  essentially unchanged. It was popularised in the 1960s with
+                  the release of Letraset sheets containing Lorem Ipsum
+                  passages, and more recently with desktop publishing software
+                  like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+                <a href="#" class="text-blue-400 underline">see more</a>
+
+                <!-- image meta -->
+                <div class="flex flex-1 justify-between gap-5 mt-5">
+                  <div class="inline-flex gap-4 justify-start">
+                    <div class="inline-flex flex-col items-start">
+                      <p class="text-gray-600 text-base leading-5">Views</p>
+                      <p class="font-semibold">4,5234,10</p>
+                    </div>
+                    <div class="inline-flex flex-col items-start">
+                      <p class="text-gray-600 text-base leading-5">Downloads</p>
+                      <p class="font-semibold">5234,109</p>
+                    </div>
+                  </div>
+                  <div class="inline-flex gap-4 justify-end">
+                    <div class="inline-flex flex-col items-start">
+                      <button
+                        class="border-2 border-gray-400 rounded-lg shadow-md px-3 py-2"
+                      >
+                        Share
+                      </button>
+                    </div>
+                    <div class="inline-flex flex-col items-start">
+                      <button
+                        class="border-2 border-gray-400 rounded-lg shadow-md px-3 py-2"
+                      >
+                        Downloads
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="px-1 py-3 absolute bottom-4">
+                  <span
+                    class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
+                    >#Bird</span
+                  >
+                  <span
+                    class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
+                    >#Photograhpy</span
+                  >
+                  <span
+                    class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
+                    >#Learning</span
+                  >
+                </div>
               </div>
             </div>
             <div class="flex flex-wrap gap-6 mt-6">
