@@ -8,18 +8,57 @@
   </head>
   <body class="bg-slate-100 flex flex-col min-h-screen dark:bg-gray-900">
     <header
-      class="bg-blue-500 text-white p-4 text-center font-bold dark:bg-blue-800 sticky top-0"
+      class="bg-blue-500 text-white p-4 text-center font-bold dark:bg-blue-800 sticky top-0 z-10"
     >
-      <button
-        class="mt-2 bg-gray-200 text-black py-2 px-4 rounded"
-        id="theme-toggle"
-      >
-        Dark Mode
-      </button>
+      <div class="flex flex-1 justify-between items-center">
+        <button
+          class="ml-32 mt-2 bg-gray-200 text-black py-2 px-4 rounded"
+          id="sidebar-toggle"
+        >
+          <svg
+            class="w-6 h-6 text-gray-800 dark:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M18 6h-8m8 4H6m12 4h-8m8 4H6"
+            />
+          </svg>
+        </button>
+        <button
+          class="mt-2 bg-gray-200 text-black py-2 px-4 rounded"
+          id="theme-toggle"
+        >
+          <svg
+            class="w-6 h-6 text-gray-800 dark:text-white"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M11.675 2.015a.998.998 0 0 0-.403.011C6.09 2.4 2 6.722 2 12c0 5.523 4.477 10 10 10 4.356 0 8.058-2.784 9.43-6.667a1 1 0 0 0-1.02-1.33c-.08.006-.105.005-.127.005h-.001l-.028-.002A5.227 5.227 0 0 0 20 14a8 8 0 0 1-8-8c0-.952.121-1.752.404-2.558a.996.996 0 0 0 .096-.428V3a1 1 0 0 0-.825-.985Z"
+              clip-rule="evenodd"
+            />
+          </svg>
+        </button>
+      </div>
     </header>
     <div class="flex flex-grow">
       <aside
-        class="w-2/12 bg-gray-300 dark:bg-slate-800 rounded-md shadow-md p-6"
+        class="bg-gray-300 hidden md:block dark:bg-slate-800 rounded-md shadow-md p-6 transform translate-x-0 transition-transform duration-300 ease-in-out"
+        id="sidebar"
       >
         <div class="flex items-center mb-8">
           <img
@@ -55,18 +94,21 @@
           </li>
         </ul>
       </aside>
-      <main class="flex-1 bg-slate-200 dark:bg-gray-800 flex-grow">
+      <main
+        class="flex-1 bg-slate-200 dark:bg-gray-800 flex-grow transition-all duration-300 ease-in-out"
+        id="main-content"
+      >
         <div class="container mx-auto">
           <h2 class="text-xl font-semibold text-gray-600 mt-10">
             Image Gallery
           </h2>
-          <div class="grid grid-cols-3 gap-6 m-2 overflow-scroll">
+          <div
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 m-2 overflow-scroll"
+          >
             <!-- Image card with description-->
-            <div
-              class="max-w-[500px] rounded overflow-hidden shadow-lg relative"
-            >
+            <div class="w-auto rounded shadow-lg relative">
               <!-- Image part-->
-              <div class="aspect-w-16 aspect-h-9">
+              <div class="aspect-w-16 aspect-h-9 see-more hover:cursor-pointer">
                 <img
                   src="https://farm4.staticflickr.com/3075/3168662394_7d7103de7d_z_d.jpg"
                   alt="Image 1"
@@ -79,25 +121,41 @@
                 Feature
               </div>
               <div
-                class="px-4 py-4 flex flex-1 flex-col hover:bg-gradient-to-r hover:from-orange-200 hover:via-red-200 hover:to-purple-200 rounded-md"
+                class="px-4 pt-4 flex flex-1 flex-col hover:bg-gradient-to-r hover:from-orange-200 hover:via-red-200 hover:to-purple-200 rounded-md"
               >
                 <div class="font-bold text-xl mb-2">The Birds</div>
-                <p class="text-gray-700 text-base line-clamp-5">
-                  Lorem Ipsum is simply dummy text of the printing and
+                <div class="flex-grow">
+                  <p class="text-gray-700 text-base line-clamp-5">
+                    Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's
+                    standard dummy text ever since the 1500s, when an unknown
+                    printer took a galley of type and scrambled it to make a
+                    type specimen book. It has survived not only five centuries,
+                    but also the leap into electronic typesetting, remaining
+                    essentially unchanged. It was popularised in the 1960s with
+                    the release of Letraset sheets containing Lorem Ipsum
+                    passages, and more recently with desktop publishing software
+                    like Aldus PageMaker including versions of Lorem Ipsum.
+                  </p>
+                  <a
+                    href="#"
+                    class="text-blue-400 underline see-more"
+                    data-content=" Lorem Ipsum is simply dummy text of the printing and
                   typesetting industry. Lorem Ipsum has been the industry's
                   standard dummy text ever since the 1500s, when an unknown
-                  printer took a galley of type and scrambled it to make a type
-                  specimen book. It has survived not only five centuries, but
-                  also the leap into electronic typesetting, remaining
+                  printer took a galley of type and scrambled it to make a
+                  type specimen book. It has survived not only five centuries,
+                  but also the leap into electronic typesetting, remaining
                   essentially unchanged. It was popularised in the 1960s with
                   the release of Letraset sheets containing Lorem Ipsum
                   passages, and more recently with desktop publishing software
-                  like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-                <a href="#" class="text-blue-400 underline">see more</a>
+                  like Aldus PageMaker including versions of Lorem Ipsum."
+                    >see more</a
+                  >
+                </div>
 
                 <!-- image meta -->
-                <div class="flex flex-1 justify-between gap-5 mt-5">
+                <div class="flex flex-1 justify-between gap-2 mt-5">
                   <div class="inline-flex gap-4 justify-start">
                     <div class="inline-flex flex-col items-start">
                       <p class="text-gray-600 text-base leading-5">Views</p>
@@ -111,22 +169,51 @@
                   <div class="inline-flex gap-4 justify-end">
                     <div class="inline-flex flex-col items-start">
                       <button
+                        id="share-btn"
                         class="border-2 border-gray-400 rounded-lg shadow-md px-3 py-2"
                       >
-                        Share
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          x="0px"
+                          y="0px"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 30 30"
+                        >
+                          <path
+                            d="M 23 3 A 4 4 0 0 0 19 7 A 4 4 0 0 0 19.09375 7.8359375 L 10.011719 12.376953 A 4 4 0 0 0 7 11 A 4 4 0 0 0 3 15 A 4 4 0 0 0 7 19 A 4 4 0 0 0 10.013672 17.625 L 19.089844 22.164062 A 4 4 0 0 0 19 23 A 4 4 0 0 0 23 27 A 4 4 0 0 0 27 23 A 4 4 0 0 0 23 19 A 4 4 0 0 0 19.986328 20.375 L 10.910156 15.835938 A 4 4 0 0 0 11 15 A 4 4 0 0 0 10.90625 14.166016 L 19.988281 9.625 A 4 4 0 0 0 23 11 A 4 4 0 0 0 27 7 A 4 4 0 0 0 23 3 z"
+                          ></path>
+                        </svg>
                       </button>
                     </div>
                     <div class="inline-flex flex-col items-start">
                       <button
                         class="border-2 border-gray-400 rounded-lg shadow-md px-3 py-2"
                       >
-                        Downloads
+                        <svg
+                          aria-hidden="true"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M12 11v5m0 0 2-2m-2 2-2-2M3 6v1a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1Zm2 2v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8H5Z"
+                          />
+                        </svg>
                       </button>
                     </div>
                   </div>
                 </div>
 
-                <div class="px-1 py-3 absolute bottom-4">
+                <div
+                  class="px-1 my-5 pt-3 bottom-1 flex flex-1 gap-1 justify-between"
+                >
                   <span
                     class="inline-block bg-gray-300 rounded-full px-3 py-1 text-sm font-semibold text-gray-800 mr-2 mb-2"
                     >#Bird</span
@@ -220,10 +307,10 @@
                 </div>
               </div>
             </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
+            <div class="relative z-0">
+              <div class="aspect-w-16 aspect-h-9">
                 <img
-                  src="https://fastly.picsum.photos/id/654/200/300.jpg?hmac=JhhoLGzzNeSmL5tgcWbz2N4DiYmrpTPsjKCw4MeIcps"
+                  src="https://farm7.staticflickr.com/6089/6115759179_86316c08ff_z_d.jpg"
                   alt="Image 1"
                   class="object-cover w-full h-full rounded-md shadow-lg"
                 />
@@ -238,141 +325,6 @@
                 />
               </div>
             </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-6 mt-6">
-              <div class="flex-1 aspect-w-16 aspect-h-9">
-                <img
-                  src="https://placehold.co/600x400/EEE/31343C"
-                  alt="Image 1"
-                  class="object-cover w-full h-full rounded-md shadow-lg"
-                />
-              </div>
-            </div>
           </div>
         </div>
       </main>
@@ -382,11 +334,179 @@
     >
       <p>&copy; Ostad Tailwind Layout</p>
     </footer>
+
+    <!-- modal area start-->
+    <div
+      id="modal"
+      class="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center z-50 hidden"
+    >
+      <div class="bg-white w-4/5 max-w-3xl rounded-lg p-7">
+        <button
+          id="close-modal"
+          class="absolute top-4 right-4 text-white bg-red-800 px-4 py-2 rounded-full"
+        >
+          X
+        </button>
+        <h3 class="text-xl font-semibold text-gray-800 underline">
+          See More Details
+        </h3>
+        <p id="modal-content" class="text-gray-700"></p>
+      </div>
+    </div>
+    <!-- modal area end-->
+
+    <!-- modal area start-->
+    <div
+      id="modal-share"
+      class="fixed inset-0 bg-gray-800 bg-opacity-20 flex justify-center items-center z-50 hidden"
+    >
+      <div class="bg-white w-2/5 max-w-3xl rounded-lg p-7">
+        <button
+          id="close-share-modal"
+          class="absolute top-4 right-4 text-white bg-red-800 px-4 py-2 rounded-full"
+        >
+          X
+        </button>
+        <h3 class="text-xl font-semibold text-gray-800 underline">
+          Share in Social Media
+        </h3>
+        <div
+          id="modal-share-content"
+          class="text-gray-700 flex justify-center items-center flex-1"
+        >
+          <div>
+            <a href="https://whatsapp.com" target="_blank">
+              <svg
+                width="60px"
+                height="60px"
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="Layer_2" data-name="Layer 2">
+                  <g id="invisible_box" data-name="invisible box">
+                    <rect width="48" height="48" fill="none" />
+                  </g>
+                  <g id="Icons">
+                    <g>
+                      <path
+                        d="M38.9,8.1A20.9,20.9,0,0,0,3.2,22.8,19.8,19.8,0,0,0,6,33.2L3,44l11.1-2.9a20.3,20.3,0,0,0,10,2.5A20.8,20.8,0,0,0,38.9,8.1Zm-14.8,32a17.1,17.1,0,0,1-9.5-2.8L8,39.1l1.8-6.4a17.9,17.9,0,0,1-3.1-9.9A17.4,17.4,0,1,1,24.1,40.1Z"
+                      />
+                      <path
+                        d="M33.6,27.2A29.2,29.2,0,0,0,30,25.5c-.4-.2-.8-.3-1.1.2s-1.4,1.7-1.7,2.1a.8.8,0,0,1-1.1.1,15.2,15.2,0,0,1-4.2-2.6A15,15,0,0,1,19,21.7a.7.7,0,0,1,.2-1l.8-1a3.5,3.5,0,0,0,.5-.8.9.9,0,0,0,0-.9c-.2-.3-1.2-2.8-1.6-3.9s-.9-.9-1.2-.9h-1a1.7,1.7,0,0,0-1.4.7,5.5,5.5,0,0,0-1.8,4.3,10.4,10.4,0,0,0,2.1,5.4c.3.3,3.7,5.6,8.9,7.8a16.4,16.4,0,0,0,3,1.1,6.4,6.4,0,0,0,3.3.2c1-.1,3.1-1.2,3.5-2.4s.5-2.3.3-2.5A2.1,2.1,0,0,0,33.6,27.2Z"
+                      />
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </a>
+          </div>
+          <div>
+            <svg
+              fill="#000000"
+              width="60px"
+              height="60px"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              data-name="Layer 1"
+            >
+              <path
+                d="M20.9,2H3.1A1.1,1.1,0,0,0,2,3.1V20.9A1.1,1.1,0,0,0,3.1,22h9.58V14.25h-2.6v-3h2.6V9a3.64,3.64,0,0,1,3.88-4,20.26,20.26,0,0,1,2.33.12v2.7H17.3c-1.26,0-1.5.6-1.5,1.47v1.93h3l-.39,3H15.8V22h5.1A1.1,1.1,0,0,0,22,20.9V3.1A1.1,1.1,0,0,0,20.9,2Z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- modal area end-->
+
     <script>
       const themeToggle = document.getElementById("theme-toggle");
+
+      const sidebarToggle = document.getElementById("sidebar-toggle");
+      const sidebar = document.getElementById("sidebar");
+      const mainContent = document.getElementById("main-content");
+
       const htmlElement = document.documentElement;
       themeToggle.addEventListener("click", () => {
         htmlElement.classList.toggle("dark");
+      });
+
+      if (window.innerWidth < 768) {
+        sidebar.classList.toggle("-translate-x-full");
+      }
+
+      sidebarToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        sidebar.classList.toggle("translate-x-0");
+
+        if (sidebar.classList.contains("-translate-x-full")) {
+          mainContent.classList.add("w-screen");
+          sidebar.classList.toggle("hidden");
+        } else {
+          mainContent.classList.remove("w-screen");
+          sidebar.classList.toggle("hidden");
+        }
+      });
+
+      const menuItems = document.querySelectorAll("aside ul li");
+      // menuItems like [{..}, {..}]
+      menuItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          menuItems.forEach((i) =>
+            i.classList.remove("active", "bg-blue-500", "text-white")
+          );
+
+          item.classList.add("active", "bg-blue-500", "text-white");
+        });
+      });
+
+      // modal functionalities
+
+      const modal = document.getElementById("modal");
+      const closeModal = document.getElementById("close-modal");
+      const modalContent = document.getElementById("modal-content");
+
+      const seeMoreLinks = document.querySelectorAll(".see-more");
+      seeMoreLinks.forEach((item) => {
+        item.addEventListener("click", (e) => {
+          e.preventDefault();
+          const content = item.getAttribute("data-content");
+          modalContent.textContent = content;
+          modal.classList.remove("hidden");
+        });
+      });
+
+      closeModal.addEventListener("click", () => {
+        modal.classList.add("hidden");
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.add("hidden");
+        }
+      });
+
+      // share modal functionalities
+
+      const shareModal = document.getElementById("modal-share");
+      const closeShareModal = document.getElementById("close-share-modal");
+      const modalShareContent = document.getElementById("modal-share-content");
+
+      const shareBtn = document.getElementById("share-btn");
+
+      shareBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        shareModal.classList.remove("hidden");
+      });
+
+      closeShareModal.addEventListener("click", () => {
+        shareModal.classList.add("hidden");
+      });
+
+      shareModal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          shareModal.classList.add("hidden");
+        }
       });
     </script>
   </body>
